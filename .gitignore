@@ -1,6 +1,7 @@
 .DS_Store
 node_modules/
 components/
+build/
 lib-cov
 *.seed
 *.log
@@ -9,6 +10,7 @@ lib-cov
 *.out
 *.pid
 *.gz
+*.swp
 
 pids
 logs
