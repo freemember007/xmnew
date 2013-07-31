@@ -3,6 +3,7 @@
  */
 
 var express = require('express'),
+	util = require('util'),
 	routes = require('./routes'),
 	fs = require('fs');
 var app = module.exports = express();
@@ -20,6 +21,20 @@ doT.setGlobals({
 		return fs.readFileSync(__dirname + '/views' + path)
 	}
 })
+
+/**
+ * 抓取任务
+ */
+var grab = require('./grab.js');
+grab.start();
+var cronJob = require('cron').CronJob;
+var job = new cronJob({
+	cronTime: '00 */10 * * * *',
+	onTick: function(){util.log('job start...'); grab.start()},
+	start: false, //立即开始，但基本上要碰运气。先手动开始吧。。。
+	timeZone: 'Asia/Chongqing'
+});
+job.start();
 
 // Configuration
 

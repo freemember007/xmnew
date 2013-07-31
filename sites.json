@@ -1,0 +1,84 @@
+{
+	"amazon": {
+		"match": "amazon\\.cn|z\\.cn",
+		"sitename": "亚马逊中国",
+		"url": ".*?[A-Za-z0-9]{10}",
+		"title": "$('h1').text()",
+		"image": "$('#original-main-image').attr('src')",
+		"fetchPrice": "\"dealPrice\"[\\s\\S]*\"price\" : \"|<b class=\"priceLarge\">|<span class=\"priceLarge\">"
+	},
+	"amazonUSA": {
+		"match": "amazon\\.com",
+		"sitename": "亚马逊美国",
+		"url": ".*?[A-Z0-9]{10}",
+		"title": "$('span#btAsinTitle').text()||$('h1').text()",
+		"image": "$('img#main-image').attr('src')",
+		"fetchPrice": "<b class=\"priceLarge\">|<span class=\"a-color-price a-size-large\">"
+	},
+	"taobao": {
+		"match": "taobao\\.com\\/item",
+		"sitename": "淘宝",
+		"url": "(.*?htm\\?).*?(id=\\d+)",
+		"title": "$('.tb-detail-hd h3').text()",
+		"image": "$('img#J_ImgBooth').attr('data-src')",
+		"fetchPrice": "class=\"tb-rmb-num\">"
+	},
+	"tmall": {
+		"match": "tmall\\.com\\/item",
+		"sitename": "天猫",
+		"url": "(.*?htm\\?).*?(id=\\d+)",
+		"title": "$('.tb-detail-hd h3').text()",
+		"image": "$('#J_ImgBooth').attr('src')",
+		"fetchPrice": "<em class=\"tb-rmb-num\">|class=\"J_originalPrice\">|'reservePrice' : '|'defaultItemPrice':'"
+	},
+	"jd": {
+		"match": "item\\.jd\\.com|360buy\\.com",
+		"sitename": "京东",
+		"url": "(.*?html).*",
+		"title": "$('h1').text()",
+		"image": "$('.jqzoom').attr('src')",
+		"fetchPrice": "18px\">&yen;",
+		"productID": "\\/(\\d+)\\.html",
+		"MobileURL": "http://m.jd.com/product/888888.html"
+	},
+	"dangdang": {
+		"match": "product\\.dangdang\\.com",
+		"sitename": "当当",
+		"url": ".*?product_id=\\d+",
+		"title": "$('div.head h1').text()",
+		"image": "$('#largePic').attr('wsrc')",
+		"fetchPrice": "id=\"promo_price\">&yen;|<span id=\"salePriceTag\">&yen;|<span class=\"yen\">&yen;<\\/span>"
+	},
+	"51buy": {
+		"match": "item\\.51buy\\.com",
+		"sitename": "易迅",
+		"url": ".*?html",
+		"title": "$('div.property.id_promotion h1').text()",
+		"image": "$('img#smallImage').attr('src')",
+		"fetchPrice": "<strong class=\"price_font\">"
+	},
+	"suning": {
+		"match": "suning\\.com\\/emall",
+		"sitename": "苏宁易购",
+		"url": ".*?html",
+		"title": "$('h1').text()",
+		"image": "$('div.zoomple img').attr('src')",
+		"fetchPrice": "&currPrice="
+	},
+	"newegg": {
+		"match": "newegg\\.com\\.cn\\/Product",
+		"sitename": "新蛋",
+		"url": ".*?htm",
+		"title": "$('h1').text()",
+		"image": "$('img#midImg').attr('src380')",
+		"fetchPrice": ",pvalues:"
+	},
+	"yihaodian": {
+		"match": "yihaodian\\.com\\/item|1mall\\.com\\/item",
+		"sitename": "一号店",
+		"url": ".*?item\\/\\d+",
+		"title": "$('h1').text()",
+		"image": "$('img#productImg').attr('src')",
+		"fetchPrice": "id=\"salePrice\"  value=\""
+	}
+}

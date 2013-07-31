@@ -1,0 +1,21 @@
+<div id="modal-wrapper">
+	<div class="" id="detailContainer">
+		<a href="" id="close">×</a>
+		<div class="modal-body">
+			<h3 id='detailTitle'>{{=it.get('title')}}</h3>
+			<img id='detailImage' src='{{=it.get('image') || it.get('mimage')}}'>
+			<div id="detailContent">
+				{{=it.get('content')}}
+			</div>
+			
+			<div id="detailPrice">
+				<p>原价:<span id='oldPrice'>￥{{=it.get('oldPrice') || it.get('price')}}</span></p>
+				<p>现价:<span id='newPrice'>￥{{=it.get('newPrice') || it.get('price')}}</span></p>
+				<p>商城:<span> {{=it.get('mall')}}</span></p>
+				<p>爆料:<span> {{=it.get('source')}}</span></p>
+				<a target="_blank" href="{{=it.get('url') || it.get('blink')}}" class="btn btn-warning btn-large" id='buyButton' >立即购买</a>
+				<span class="btn btn-success btn-large" id='buyButton' >分享到微博</span>
+			</div>
+		</div>
+	</div>
+</div>

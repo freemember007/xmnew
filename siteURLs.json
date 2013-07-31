@@ -1,0 +1,52 @@
+{
+	"amazon": {
+		"match": "amazon\\.cn|z\\.cn",
+		"sitename": "亚马逊中国",
+		"url": "http.*?[A-Z0-9]{10}"
+	},
+	"amazonUSA": {
+		"match": "amazon\\.com",
+		"sitename": "亚马逊美国",
+		"url": "http.*?[A-Z0-9]{10}"
+	},
+	"taobao": {
+		"match": "taobao\\.com\\/item",
+		"sitename": "淘宝",
+		"url": "(http.*?htm\\?).*?(id=\\d+)"
+	},
+	"tmall": {
+		"match": "tmall\\.com\\/item",
+		"sitename": "天猫",
+		"url": "(http.*?htm\\?).*?(id=\\d+)"
+	},
+	"jd": {
+		"match": "item\\.jd\\.com|360buy\\.com\\/product",
+		"sitename": "京东",
+		"url": "http:\\/\\/item.*?html"
+	},
+	"dangdang": {
+		"match": "product\\.dangdang\\.com",
+		"sitename": "当当",
+		"url": "http:\\/\\/product.*?product_id=\\d+"
+	},
+	"51buy": {
+		"match": "item\\.51buy\\.com",
+		"sitename": "易迅",
+		"url": "http:\\/\\/item.*?html"
+	},
+	"suning": {
+		"match": "suning\\.com\\/emall",
+		"sitename": "苏宁易购",
+		"url": "http:\\/\\/www\\.suning.*?html"
+	},
+	"newegg": {
+		"match": "newegg\\.com\\.cn\\/Product",
+		"sitename": "新蛋",
+		"url": "http.*?htm"
+	},
+	"yihaodian": {
+		"match": "yihaodian\\.com\\/item|1mall\\.com\\/item",
+		"sitename": "一号店",
+		"url": "http.*?item\\/\\d+"
+	}
+}
