@@ -3,10 +3,12 @@
  */
 var mongoose = require('mongoose')
 	, models = require('../models/models.js')
-	, Deal = models.Deal;
+	, Deal = models.Deal
+	, _ = require('underscore')
+	, moment = require('moment');
 
 mongoose.connect('mongodb://localhost/xmnew');
-
+moment.lang('zh-cn');
 
 
 /*
@@ -19,6 +21,9 @@ exports.index = function(req, res){
 		if (err) {
 			return res.json({type: 'fail', data: err.message })
 		}
+		_.map(deals, function(deal){
+			deal.moment = moment(new Date( parseInt(deal._id.toString().substring( 0, 8 ), 16 ) * 1000 )).fromNow()
+		})
 		return res.render('main', {title: '', nextURL: '/page/' + newPageNum, data: deals })
 	})
 }
@@ -36,6 +41,9 @@ exports.deals = function(req, res){
 		if (err) {
 			return res.json({type: 'fail', data: err.message })
 		}
+		_.map(deals, function(deal){
+			deal.moment = moment(new Date( parseInt(deal._id.toString().substring( 0, 8 ), 16 ) * 1000 )).fromNow()
+		})
 		return res.render('main', {title: req.params.name + '-', nextURL: nextURL, data: deals })
 	})
 }

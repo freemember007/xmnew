@@ -26,7 +26,7 @@ doT.setGlobals({
  * 抓取任务
  */
 var grab = require('./grab.js');
-grab.start();
+//grab.start();
 var cronJob = require('cron').CronJob;
 var job = new cronJob({
 	cronTime: '00 */15 * * * *',
