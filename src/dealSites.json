@@ -1,13 +1,68 @@
 [
 	{
-		"sitename": "什么值得买",
-		"url": "http://www.smzdm.com",
-		"list": "div.perContentBox",
+		"sitename": "折800值得买",
+		"url": "http://zhi.zhe800.com",
+		"list": "div.ztdeal",
+		"title": "h3",
+		"alink": "h5 a",
+		"blink": "div.l a",
+		"simage": "img",
+		"content": "div.info"
+	},{
+		"sitename": "海淘情报站",
+		"url": "http://www.htqbw.com",
+		"list": "div.list_summary.perContentBox",
+		"title": "div.list_title",
+		"alink": "a",
+		"blink": "div.buy a",
+		"simage": "img",
+		"content": "div.post_content"
+	},{
+		"sitename": "爱图购",
+		"url": "http://itugo.com/bestbuy",
+		"list": "div.list.fn-clear",
+		"title": "div.title",
+		"price": "div.pricc",
+		"alink": "a",
+		"blink": "a.btnSee",
+		"simage": "img",
+		"content": "p"
+	},{
+		"sitename": "淘宝值得买频道",
+		"url": "http://cu.taobao.com/buyer_list.htm",
+		"list": "li.J_Looker.cjms-box",
+		"title": "h3",
+		"alink": "a",
+		"blink": "p a",
+		"simage": "a.J_LookerPoint img",
+		"content": "div.info.J_TopicInfo"
+	},{
+		"sitename": "牛杂网",
+		"url": "http://www.niuza.com",
+		"list": "div.entry",
 		"title": "h2",
 		"alink": "a",
-		"blink": ".border_radius_3",
-		"simage": ".post_thumb_pic_main",
-		"content": ".conBox"
+		"blink": "a.imlink_gobuy",
+		"simage": "img.image-frame",
+		"content": "div.entry-content"
+	},{
+		"sitename": "爱乐活良品",
+		"url": "http://www.jtzdm.com",
+		"list": "div.today-goods-item",
+		"title": "h2",
+		"alink": "a.selected",
+		"blink": "a.desc-txt",
+		"simage": "img.goods-item-img",
+		"content": "a.desc-txt"
+	},{
+		"sitename": "去买啥",
+		"url": "http://www.qumaisha.com",
+		"list": "div.list_summary.perContentBox",
+		"title": ".list_title",
+		"alink": "a",
+		"blink": ".buy a",
+		"simage": "img",
+		"content": "div.post_content"
 	},{
 		"sitename": "网购值值值",
 		"url": "http://www.zhizhizhi.com",
@@ -16,16 +71,16 @@
 		"alink": "a",
 		"blink": ".imlink_gobuy",
 		"simage": ".attachment-thumbnail.wp-post-image",
-		"content": "#content_text"
+		"content": "div#content_text"
 	},{
-		"sitename": "一淘网",
+		"sitename": "一淘优惠购",
 		"url": "http://www.etao.com",
 		"list": "div.module",
 		"title": "h3",
 		"alink": "a",
 		"blink": "a",
 		"simage": "img",
-		"content": "#content_text"
+		"content": "div.feed-desc"
 	},{
 		"sitename": "惠惠网",
 		"url": "http://www.huihui.cn",
@@ -54,15 +109,6 @@
 		"simage": "img.divimg",
 		"content": "div.postcontent"
 	},{
-		"sitename": "海淘情报站",
-		"url": "http://www.htqbw.com",
-		"list": "div.list_summary.perContentBox",
-		"title": "div.list_title",
-		"alink": "a",
-		"blink": "div.buy a",
-		"simage": "img",
-		"content": "p"
-	},{
 		"sitename": "美国便宜货",
 		"url": "http://www.mgpyh.com",
 		"list": "div.list_summary.perContentBox",
@@ -70,43 +116,7 @@
 		"alink": "a",
 		"blink": "div.buy a",
 		"simage": "img",
-		"content": "p"
-	},{
-		"sitename": "值不值得买",
-		"url": "http://www.zbzdm.com",
-		"list": "div.post",
-		"title": "h2",
-		"alink": "a",
-		"blink": "a.go_link",
-		"simage": "img",
-		"content": "p"
-	},{
-		"sitename": "淘者",
-		"url": "http://www.tz100.com",
-		"list": "div.goods",
-		"title": "h2",
-		"alink": "a",
-		"blink": "div.goods-stat a",
-		"simage": "img",
-		"content": "p"
-	},{
-		"sitename": "便宜多",
-		"url": "http://pianyiduo.net",
-		"list": "div.list_summary.perContentBox",
-		"title": "div.list_title",
-		"alink": "a",
-		"blink": "div.buy a",
-		"simage": "img",
-		"content": "p"
-	},{
-		"sitename": "淘必得",
-		"url": "http://www.taobide.com",
-		"list": "div.promo-unit-v2919",
-		"title": "h3",
-		"alink": "a",
-		"blink": "a.buylink2",
-		"simage": "img.talk-img.cssForLazyLoad",
-		"content": "div#blogContent"
+		"content": "div.post_content"
 	},{
 		"sitename": "超值分享汇",
 		"url": "http://www.czfxh.com",
@@ -115,7 +125,7 @@
 		"alink": "a",
 		"blink": "div.buy_url a",
 		"simage": "img",
-		"content": "p"
+		"content": "div.content"
 	},{
 		"sitename": "易活",
 		"url": "http://www.cheaphuo.com",
@@ -124,7 +134,7 @@
 		"alink": "a",
 		"blink": "div.buy a",
 		"simage": "img",
-		"content": "p"
+		"content": "div.post_content"
 	},{
 		"sitename": "值不值得买",
 		"url": "http://www.zbzdm.com",
@@ -133,7 +143,7 @@
 		"alink": "a",
 		"blink": "a.go_link",
 		"simage": "img",
-		"content": "p"
+		"content": "div.post.single"
 	},{
 		"sitename": "每天优惠多",
 		"url": "http://www.mtyhd.com",
@@ -142,7 +152,7 @@
 		"alink": "a",
 		"blink": "div.buy a",
 		"simage": "img",
-		"content": "p"
+		"content": "div.post_content"
 	},{
 		"sitename": "我爱白菜网",
 		"url": "http://www.wabcw.info",
@@ -151,6 +161,15 @@
 		"alink": "a",
 		"blink": "div.entry a",
 		"simage": "img",
-		"content": "p"
+		"content": "div.entry"
+	},{
+		"sitename": "留住你",
+		"url": "http://www.liuzhuni.com",
+		"list": "li.con_list",
+		"title": "h3",
+		"alink": "a",
+		"blink": "a.linkto_buy",
+		"simage": "img",
+		"content": "div.content_detail.cf"
 	}
 ]

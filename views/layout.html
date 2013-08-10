@@ -1,8 +1,30 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<link rel="stylesheet" href="/stylesheets/style.css">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>{{=it.title}}网聚值得买-实时聚合最丰富最权威的值得买信息，几乎所有最值得买的商品都在这儿了</title>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/layout.css" />
+		<!--
+		<link rel='stylesheet' href='/javascripts/components/bootstrap/dist/css/bootstrap.min.css'>
+		-->
+		<link rel="stylesheet" type="text/css" href="/javascripts/components/jquery-ias/dist/css/jquery.ias.css" />
+		<script src="/javascripts/components/jquery/jquery.min.js"></script>
+		<script src="/javascripts/components/jquery-ias/dist/jquery-ias.min.js"></script>
+		<script src="/javascripts/components/doT/doT.min.js"></script>
+		<script src="/javascripts/main.js"></script>
 	</head>
+
  	<body>
-		{{=it.body}}
+
+ 		{{#def.load('/_head.html')}}
+
+ 		<div id="container">
+ 			{{=it.body}}
+ 		</div>
+		
+		<div id="bottom">
+			
+		</div>
+		
 	</body>
 </html>

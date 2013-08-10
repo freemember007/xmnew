@@ -1,10 +1,16 @@
-<div class="" id="detailContainerPage">
-	<h1 id='detailTitle'>{{=it.data.title}}</h1>
-	<div id="detailContent">
-		{{=it.data.content}}
+<div id="modal-wrapper">
+</div>
+<div class="" id="detailContainer">
+	<a href="" id="close">×</a>
+	<div class="modal-body">
+		<h1 id='detailTitle'>{{=it.data.title}}</h1>
+		<div id="detailContent">
+			{{=it.data.content}}
+		</div>
 	</div>
 	<div id="detailPrice">
 		<a target="_blank" style='color:#fff' href="{{=it.data.blink}}" class='buttonL' id='buyButton' >去抢购</a>
 		<a target="_blank" style='color:#fff; background:#44D60A' href="{{=it.data.blink}}" class='buttonL' id='shareButton' >分享到微博</a>
 	</div>
 </div>
+

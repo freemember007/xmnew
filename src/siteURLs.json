@@ -30,13 +30,13 @@
 		"url": "http:\\/\\/product.*?product_id=\\d+"
 	},
 	"51buy": {
-		"match": "item\\.51buy\\.com",
+		"match": "item\\.51buy\\.com|item\\.yixun\\.com",
 		"sitename": "易迅",
 		"url": "http:\\/\\/item.*?html"
 	},
 	"suning": {
 		"match": "suning\\.com\\/emall",
-		"sitename": "苏宁易购",
+		"sitename": "苏宁",
 		"url": "http:\\/\\/www\\.suning.*?html"
 	},
 	"newegg": {
@@ -48,5 +48,10 @@
 		"match": "yihaodian\\.com\\/item|1mall\\.com\\/item",
 		"sitename": "一号店",
 		"url": "http.*?item\\/\\d+"
+	},
+	"gome": {
+		"match": "gome\\.com\\.cn\\/product",
+		"sitename": "国美",
+		"url": "http:\\/\\/www\\.gome\\.*?product\\/\\d+\\.html"
 	}
 }

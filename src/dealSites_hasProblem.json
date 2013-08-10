@@ -1,0 +1,93 @@
+[
+	{
+		"sitename": "什么值得买",
+		"url": "http://www.smzdm.com",
+		"list": "div.perContentBox",
+		"title": "h2",
+		"alink": "a",
+		"blink": ".border_radius_3",
+		"simage": ".post_thumb_pic_main",
+		"content": ".conBox"
+	},{
+		"sitename": "淘必得",
+		"url": "http://www.taobide.com",
+		"list": "div.promo-unit-v2919",
+		"title": "h3",
+		"alink": "a",
+		"blink": "a.buylink2",
+		"simage": "img.talk-img.cssForLazyLoad",
+		"content": "div#blogContent"
+	},{
+		"sitename": "淘者",
+		"url": "http://www.tz100.com",
+		"list": "div.cell",
+		"title": "h2",
+		"alink": "a",
+		"blink": "a.btn_buy",
+		"simage": "a.post_thumb_pic img",
+		"content": "p"
+	},{
+		"sitename": "hao123今挑细选",
+		"url": "http://gouwu.baidu.com",
+		"list": "div.fa",
+		"title": "h1",
+		"alink": "a",
+		"blink": ".faee",
+		"simage": "img",
+		"content": ".fad"
+	},{
+		"sitename": "便宜多",
+		"url": "http://pianyiduo.net",
+		"list": "div.list_summary.perContentBox",
+		"title": "div.list_title",
+		"alink": "a",
+		"blink": "div.buy a",
+		"simage": "img",
+		"content": "p"
+	},{
+		"sitename": "喜折折",
+		"url": "http://www.xizhezhe.com/zhidemai",
+		"list": "div.ztdeal",
+		"title": "h3",
+		"alink": "a",
+		"blink": "a.g",
+		"simage": "img",
+		"content": "p"
+	},{
+		"sitename": "如意购",
+		"url": "http://www.ruyig.com",
+		"list": "div.content",
+		"title": "div.title",
+		"alink": "a",
+		"blink": "a.shopbuy",
+		"simage": "img",
+		"content": "div.content_box"
+	},{
+		"sitename": "金山购物",
+		"url": "http://gouwu.duba.com/zhidemai.html",
+		"list": "div.product",
+		"title": "div.biaoti",
+		"alink": "a",
+		"blink": "a.zhida",
+		"simage": "img",
+		"content": "p"
+	},{
+		"sitename": "闺蜜在买啥",
+		"url": "http://www.360xf.com",
+		"list": "div.list_summary.perContentBox",
+		"title": ".list_title",
+		"alink": "a",
+		"blink": ".buy a",
+		"simage": "img",
+		"content": "p"
+	},{
+		"sitename": "发现值得买-此站无问题，但图片质量不高",
+		"url": "http://www.kiees.com",
+		"list": "div.postbox",
+		"title": "h2",
+		"alink": "a",
+		"blink": "a.imlink_gobuy",
+		"simage": "img",
+		"content": "p"
+	}
+]

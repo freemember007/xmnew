@@ -16,7 +16,7 @@ var app = module.exports = express();
 //var dot = require('dot');
 var doT = require('express-dot');
 doT.setGlobals({
-	//partialCache : false,
+	partialCache: true, //生产模式下应设为true
 	load: function(path) {
 		return fs.readFileSync(__dirname + '/views' + path)
 	}
@@ -29,7 +29,7 @@ var grab = require('./grab.js');
 grab.start();
 var cronJob = require('cron').CronJob;
 var job = new cronJob({
-	cronTime: '00 */10 * * * *',
+	cronTime: '00 */15 * * * *',
 	onTick: function(){util.log('job start...'); grab.start()},
 	start: false, //立即开始，但基本上要碰运气。先手动开始吧。。。
 	timeZone: 'Asia/Chongqing'
@@ -39,6 +39,11 @@ job.start();
 // Configuration
 
 app.configure(function() {
+	app.use(express.compress());
+	app.use(require('stylus').middleware({
+		src: __dirname + '/public'
+	}));
+	app.use(express.static(__dirname + '/public'));
 	app.set('views', __dirname + '/views');
 	app.set('view engine', 'html' ); // 也可用dot后缀名，但那样就无语法高亮了
  	app.engine('html', doT.__express );
@@ -49,11 +54,8 @@ app.configure(function() {
 	app.use(express.session({
 		secret: 'your secret here'
 	}));
-	app.use(require('stylus').middleware({
-		src: __dirname + '/public'
-	}));
+	app.use(express.logger('dev'));
 	app.use(app.router);
-	app.use(express.static(__dirname + '/public'));
 });
 
 app.configure('development', function() {
@@ -69,8 +71,15 @@ app.configure('production', function() {
 });
 
 // Routes
-
-app.get('/', routes.index);
+// app.param('name',function(req,res,next,name){
+// 	if(name=='$'){
+// 		req.params.name = '海外购';
+// 		next();
+// 	}
+// })
+app.get('/(page)?/:pageNum?', routes.index);
+app.get('/deals/:type?/:name?/(page)?/:pageNum?', routes.deals);
+app.get('/detail/:_id/:format?', routes.detail);
 
 app.listen(3000, function() {
 	console.log("Express server listening on port %d in %s mode", 3000, app.settings.env);

@@ -11,19 +11,19 @@ var util = require('util')
 	, Deal = models.Deal;
 
 //----------------- 载入配置文件 -----------------//
-exports.start = function(){
-	//var mongoose = require('mongoose');
-	//mongoose.connection.close();
-	//mongoose.connect('mongodb://localhost/taodou');
-	count = 0;
-	fs.readFile('./src/dealSites.json', function(err, data) {
-		dealSites = JSON.parse(data);
-		grabList(dealSites[count]);
-	})
-}
+var testSite = {
+		"sitename": "折800值得买",
+		"url": "http://zhi.zhe800.com",
+		"list": "div.ztdeal",
+		"title": "h3",
+		"alink": "a",
+		"blink": "div.l a",
+		"simage": "img",
+		"content": "p"
+	}
 
 //---------------- 抓取dealList -----------------//
-function grabList(dealSite){
+function grabList(testSite){
 	if (count >= dealSites.length) {return util.log('finished!!!')};
 	var dealList = [];
 	util.log('页面下载开始...' + dealSite.url);
@@ -33,18 +33,16 @@ function grabList(dealSite){
 		util.log('页面下载完毕');
 		var $ = cheerio.load(data);
 		$(dealSite.list).each(function(i, elem){
-			if(i>9){return}; //这样写避免嵌套
+
 			// 取基本信息
+			//var hostReg = new RegExp('^(' + dealSite.url + ')?');
 			var deal = {
 				title: $(this).find(dealSite.title).text() || '',
-				alink: ($(this).find(dealSite.alink).attr('href') || '/').replace(/^\//, dealSite.url.replace(/\/[^\.]+?\.html?/,'')+'/'),
-				blink: ($(this).find(dealSite.blink).attr('href') || '/').replace(/^\//, dealSite.url.replace(/\/[^\.]+?\.html?/,'')+'/'),
+				alink: ($(this).find(dealSite.alink).attr('href') || '/').replace(/^\//, dealSite.url+'/'),
+				blink: ($(this).find(dealSite.blink).attr('href') || '/').replace(/^\//, dealSite.url+'/'),
 				simage: $(this).find(dealSite.simage).attr('data-src') || $(this).find(dealSite.simage).attr('data-original') || $(this).find(dealSite.simage).attr('original') || $(this).find(dealSite.simage).attr('src'),
-				content: $(this).find(dealSite.content).text(), //兼容无详情页的情况
 				source: dealSite.sitename
-			};
-			deal.mimage = deal.simage;
-			deal.content = deal.content + "<p><img src='" + deal.mimage + "'/></p>";
+			}
 			//deal.simage = deal.simage.replace(/\.jpg_n\d/,'');
 			util.log('第' + i + '条是：' + deal.title);
 
@@ -69,8 +67,8 @@ function grabList(dealSite){
 					}, function(result){
 						if (result !== undefined) {
 							deal.pname = result;
-							deal.catalog = k.match(/\d\={6,}(.*?)\=/)[1];
-							util.log('商品名是：' + deal.pname + '，分类是：' + deal.catalog);
+							deal.catelog = k.match(/\d\={6,}(.*?)\=/)[1];
+							util.log('商品名是：' + deal.pname + '，分类是：' + deal.catelog);
 						}	
 					})
 				})
@@ -99,14 +97,13 @@ function grabList(dealSite){
 //---------------- 抓取deal content -----------------//
 function grabDetail(dealList, dealSite){
 	var i = 1;
-	var contentReg = /<(script|div|a|input|label)[\s\S]*?\1>|<p ?><\/p>|<p>&nbsp;<\/p>/g
 	async.each(dealList, function(deal, callback) {
 		needle.get(deal.alink, {timeout: 30000}, function(err, res, body){
 			if(err) util.log(err);
 			util.log('解析第' + i + '条：' + deal.alink ); //应该不是按顺序走的吧？
 			var $ = cheerio.load(body);
-			deal.content = ((($(dealSite.content).html()||'').match(/<img.*?>|<p.*?p>/g)||[]).join('')||'').replace(contentReg, '')||deal.content;
-			deal.mimage = $(dealSite.content).find('img').first().attr('src')||deal.mimage;
+			deal.content = ($(dealSite.content).html()||'').replace(/<a.*?a>|<script[\s\S]*?script>/g, '');
+			deal.mimage = $(dealSite.content).find('img').first().attr('src')||'';
 			util.log('图片为：' + deal.mimage);
 			util.log('内容为：' + deal.content.substr(0,10));
 			i++;
@@ -128,45 +125,26 @@ function filterData(dealList){
 			saveDeal(dealList); //为避免多个callback错误, 此外不走callback
 		});
 		fetch.on('meta', function(meta){
-			var finalUrl = meta.finalUrl;
-			if (finalUrl.match(/s\.click\.taobao\.com/)){
-				deal.blink = finalUrl; // 先赋个值再说
-				var TU = finalUrl;
-				var ET = unescape(TU).replace('http://s.click.taobao.com/t_js?tu=','');
-				var fetchTB = new FetchStream(ET, {timeout: 30000, headers: {'Referer': TU}});
-				fetchTB.on('meta', function(metaTB){
-					deal.blink = metaTB.finalUrl;
-					//util.log(deal.blink);
-					trimURL();
-				})
-			}else if(finalUrl.match(/p\.yiqifa\.com|union\.dangdang\.com/)){
-				deal.blink = finalUrl.match(/^http.*?(http.*?)$/)[1];
-				//util.log(deal.blink);
-				trimURL();
-			}else{
-				deal.blink = unescape(finalUrl);
-				trimURL();
-			}
-			function trimURL(){
-				fs.readFile('./src/siteURLs.json', function(err, data) {
-					var siteURLs = JSON.parse(data);
-					for (var k in siteURLs) {
-						if (deal.blink.match(eval('/'+siteURLs[k].match+'/'))) {
-							deal.mall = siteURLs[k].sitename;
-							var urlReg = new RegExp(siteURLs[k].url);
-							if (k === 'taobao' || k === 'tmall') {
-								deal.blink = deal.blink.match(urlReg)[1] + deal.blink.match(urlReg)[2];
-								util.log(deal.blink);
-							} else {
-								util.log(deal.blink);
-								deal.blink = (deal.blink.match(urlReg)||[])[0]||deal.blink;
-								util.log(deal.blink);
-							}
-							return;
-						}	
-					}
-				})
-			}
+			deal.blink = unescape(meta.finalUrl);
+			//util.log(deal.blink + '\n[FetchStream]'+ meta.finalUrl);
+			fs.readFile('./src/siteURLs.json', function(err, data) {
+				var siteURLs = JSON.parse(data);
+				for (var k in siteURLs) {
+					if (deal.blink.match(eval('/'+siteURLs[k].match+'/'))) {
+						deal.mall = siteURLs[k].sitename;
+						var urlReg = new RegExp(siteURLs[k].url);
+						if (k === 'taobao' || k === 'tmall') {
+							deal.blink = deal.blink.match(urlReg)[1] + deal.blink.match(urlReg)[2];
+							util.log(deal.blink);
+						} else {
+							util.log(deal.blink);
+							deal.blink = (deal.blink.match(urlReg)||[])[0]||deal.blink;
+							util.log(deal.blink);
+						}
+						return;
+					}	
+				}
+			})
 			callback();
 		});
 	}, function(err) {
