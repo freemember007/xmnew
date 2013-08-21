@@ -4,8 +4,8 @@ $(document).ready(function(){
 	jQuery.ias({
 		container: '#container',
 		item: '.item',
-		pagination: 'div#navigation',
-		next: 'div#navigation a:first',
+		pagination: '#navigation',
+		next: '#navigation a:first',
 		loader: '<img src="/images/ajax-loader.gif"/>',
 		trigger: '点击加载更多...'
 	});
@@ -23,7 +23,7 @@ $(document).ready(function(){
 	});
 
 	// 显示详情
-	$('#content').delegate('.img-polaroid', 'click', function(e){
+	$('#container').delegate('.img-polaroid', 'click', function(e){
 		var _id = $(this).attr('_id');
 		e.preventDefault();
 		$.get('/javascripts/templates/detail.html', function(res, status){
@@ -43,4 +43,17 @@ $(document).ready(function(){
 			})
 		});
 	})
+
+	// 返回顶部
+	$(document).scroll(function() {
+		var offset = $(document).scrollTop();
+		if (offset > 800) {
+			$('#backtt').fadeIn(500);
+		} else {
+			$('#backtt').fadeOut(500);
+		}
+	});
+	$('#backtt').click(function() {
+		$('html,body').animate({scrollTop: 0}, 200);
+	});	
 });

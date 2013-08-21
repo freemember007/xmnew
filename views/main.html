@@ -1,4 +1,8 @@
-<div id="content">
+<div id='hint'>
+	<b>提示</b>：本站推荐商品均属特价，有很强的时效性，价格可能会在短时间内失效，为及时掌握最新超值商品信息，建议安装<a href='https://itunes.apple.com/cn/app/id662513341' target='_blank'>iPhone App</a>或<a href='https://itunes.apple.com/cn/app/id662513341' target='_blank'>浏览器插件</a>。
+</div>
+<div id="container">
+
 	{{~it.data :value:index}}
 		<div class='item'>
 
@@ -29,8 +33,11 @@
 			</div>
 			
 		</div>
-	{{~}}	
+	{{~}}
+
+	<div id="navigation">
+		<a href='{{=it.nextURL}}'>next</a>
+	</div>
+
 </div>
-<div id="navigation">
-	<a href='{{=it.nextURL}}'>next</a>
-</div>
+

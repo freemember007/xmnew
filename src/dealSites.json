@@ -26,7 +26,7 @@
 		"alink": "a",
 		"blink": "a.btnSee",
 		"simage": "img",
-		"content": "p"
+		"content": "div.ct"
 	},{
 		"sitename": "淘宝值得买频道",
 		"url": "http://cu.taobao.com/buyer_list.htm",
@@ -71,7 +71,7 @@
 		"alink": "a",
 		"blink": ".imlink_gobuy",
 		"simage": ".attachment-thumbnail.wp-post-image",
-		"content": "div#content_text"
+		"content": "#content_text"
 	},{
 		"sitename": "一淘优惠购",
 		"url": "http://www.etao.com",
@@ -125,7 +125,7 @@
 		"alink": "a",
 		"blink": "div.buy_url a",
 		"simage": "img",
-		"content": "div.content"
+		"content": "div.post div.content"
 	},{
 		"sitename": "易活",
 		"url": "http://www.cheaphuo.com",

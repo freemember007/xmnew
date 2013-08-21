@@ -99,7 +99,7 @@ function grabList(dealSite){
 //---------------- 抓取deal content -----------------//
 function grabDetail(dealList, dealSite){
 	var i = 1;
-	var contentReg = /<(script|div|a|input|label)[\s\S]*?\1>|<p ?><\/p>|<p>&nbsp;<\/p>/g
+	var contentReg = /<(script|div|a|label)[\s\S]*?\1>|<input[\s\S]*?>|<p ?><\/p>|<p>&nbsp;<\/p>|<img[^>]*?180px.*?>|您可以用合作网站帐号登录:|建议：大家都去安装一个，商品历史价格一目了然，自己就能辨别真假降价。/g
 	async.each(dealList, function(deal, callback) {
 		needle.get(deal.alink, {timeout: 30000}, function(err, res, body){
 			if(err) util.log(err);
@@ -108,7 +108,7 @@ function grabDetail(dealList, dealSite){
 			deal.content = ((($(dealSite.content).html()||'').match(/<img.*?>|<p.*?p>/g)||[]).join('')||'').replace(contentReg, '')||deal.content;
 			deal.mimage = $(dealSite.content).find('img').first().attr('src')||deal.mimage;
 			util.log('图片为：' + deal.mimage);
-			util.log('内容为：' + deal.content.substr(0,10));
+			util.log('内容为：' + deal.content.substr(0,100));
 			i++;
 			callback();
 		});
@@ -139,7 +139,7 @@ function filterData(dealList){
 					//util.log(deal.blink);
 					trimURL();
 				})
-			}else if(finalUrl.match(/p\.yiqifa\.com|union\.dangdang\.com/)){
+			}else if(finalUrl.match(/p\.yiqifa\.com|union\.dangdang\.com|c\.duomai\.com/)){
 				deal.blink = finalUrl.match(/^http.*?(http.*?)$/)[1];
 				//util.log(deal.blink);
 				trimURL();

@@ -4,24 +4,22 @@
   background: #d24036;
 }
 #top {
-  padding: 10px 50px 0 50px;
-  height: 40px;
-  line-height: 30px;
-  margin-left: 50px;
+  width: 950px;
+  height: 50px;
+  line-height: 50px;
+  margin: 0 auto;
   font-weight: bold;
-  display: inline-block;
   color: #fff;
 }
 #logo {
   float: left;
-  margin-left: 50px;
   font-size: 22px;
   font-weight: bolder;
   color: #fff;
 }
 #nav {
   float: left;
-  margin-left: 150px;
+  margin-left: 165px;
   font-size: 16px;
   font-weight: bolder;
 }
@@ -30,8 +28,8 @@
   font-size: 16px;
 }
 #search {
-  float: left;
-  margin-left: 150px;
+  float: right;
+  margin-top: 15px;
 }
 #sub-nav {
   color: #eee;
@@ -56,6 +54,20 @@
 #sitelist a {
   color: #fff;
 }
+#hint {
+  margin: 10px auto;
+  width: 970px;
+  color: #999;
+  text-align: center;
+}
+#hint a {
+  color: #f00;
+}
+#container {
+  margin: 0 auto;
+  width: 970px;
+  overflow: auto;
+}
 .item {
   display: block;
   height: 330px;
@@ -64,7 +76,7 @@
   overflow: hidden;
   padding: 10px;
   border: 1px solid #ccc;
-  margin: 0 20px 20px 0;
+  margin: 0 10px 20px 10px;
   background: #fff;
 }
 .item:hover {
@@ -145,7 +157,8 @@
   overflow: auto;
 }
 #detailContainerPage {
-  margin-bottom: 30px;
+  margin: 20px auto 30px auto;
+  width: 960px;
   background: #fff;
   box-shadow: 0px 2px 10px 2px rgba(0,0,0,0.2);
   z-index: 10001;
@@ -194,6 +207,40 @@
   margin-right: 20px;
   display: inline-block;
 }
+#foot {
+  margin: 0 auto;
+  width: 100%;
+  height: 150px;
+  background: #000;
+}
+#footContainer {
+  margin: 0 auto;
+  height: 120px;
+  width: 950px;
+  font-size: 13px;
+  color: #ccc;
+  line-height: 20px;
+}
+#footContainer b {
+  font-size: 16px;
+  display: block;
+  margin-bottom: 10px;
+}
+#about {
+  margin-top: 20px;
+  float: left;
+  width: 480px;
+}
+#downApp {
+  float: left;
+  width: 200px;
+  margin-left: 50px;
+  margin-top: 20px;
+}
+#copyright {
+  float: right;
+  margin-top: 50px;
+}
 body {
   margin: 0 0;
   padding: 0 0;
@@ -207,15 +254,14 @@ a {
 a:visited {
   color: #333;
 }
-#container {
-  margin: 0 auto;
-  margin-top: 20px;
-  width: 970px;
-  overflow: auto;
-}
-#bottom {
-  margin: 0 auto;
-  width: 100%;
-  height: 120px;
-  background: #000;
+#backtt {
+  right: 30px;
+  bottom: 30px;
+  width: 60px;
+  height: 60px;
+  background: url("/images/backtt.png");
+  position: fixed;
+  display: none;
+  cursor: pointer;
+  z-index: 9998;
 }
